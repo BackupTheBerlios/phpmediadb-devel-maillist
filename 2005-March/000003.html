@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [phpmediadb-devel] SQL-Transaktionen
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phpmediadb-devel/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:phpmediadb-devel%40lists.berlios.de?Subject=Re%3A%20%5Bphpmediadb-devel%5D%20SQL-Transaktionen&In-Reply-To=%3C42408456.1090303%40users.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000002.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[phpmediadb-devel] SQL-Transaktionen</H1>
+    <B>Blaschke, Markus</B> 
+    <A HREF="mailto:phpmediadb-devel%40lists.berlios.de?Subject=Re%3A%20%5Bphpmediadb-devel%5D%20SQL-Transaktionen&In-Reply-To=%3C42408456.1090303%40users.berlios.de%3E"
+       TITLE="[phpmediadb-devel] SQL-Transaktionen">mblaschke at berlios.de
+       </A><BR>
+    <I>Tue Mar 22 21:47:18 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000002.html">[phpmediadb-devel] Methodenbenennung in tier.data
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Creole besitzt die Funktion der Transaktionen, wir sollten dies 
+unbedingt nutzen, wenn dies ohne Probleme auch mit MySQL funktioniert.
+
+Beispiel:
+try {
+   $conn-&gt;setAutoCommit(false); // start a transaction
+   $conn-&gt;executeUpdate(&quot;DELETE FROM mytable WHERE id = 3&quot;);
+   $conn-&gt;executeUpdate(&quot;DELETE FROM myothertable WHERE id = 4&quot;);
+   $conn-&gt;executeUpdate(&quot;UDPATE stillanothertable SET col = 1 WHERE id = 
+5&quot;);
+   $conn-&gt;commit(); // commit the transaction
+} catch (Exception $e) {
+   $conn-&gt;rollback(); // abort all delete/update queries in the transaction
+   print &quot;Aborted the transaction because: &quot; . $e-&gt;getMessage();
+}
+
+
+Damit k&#246;nnen wir verhindern, dass die SQL-Befehle zwischendurch 
+abbrechen und wir eine inkonsistente Datenbank haben.
+
+Bitte unbedingt testen, ob das mit MySQL problemlos funktioniert.
+
+-- 
+Mit freundlichen Grue&#223;en / Best regards,
+  Markus Blaschke
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/phpmediadb-devel/attachments/20050322/a3d57af0/attachment.pgp">https://lists.berlios.de/pipermail/phpmediadb-devel/attachments/20050322/a3d57af0/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000002.html">[phpmediadb-devel] Methodenbenennung in tier.data
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phpmediadb-devel">More information about the phpmediadb-devel
+mailing list</a><br>
+</body></html>

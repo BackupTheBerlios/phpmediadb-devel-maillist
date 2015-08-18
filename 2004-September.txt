@@ -1,0 +1,131 @@
+From boris.ruf at gmx.com  Tue Sep 14 13:04:58 2004
+From: boris.ruf at gmx.com (Boris Ruf)
+Date: Tue, 14 Sep 2004 13:04:58 +0200
+Subject: [phpmediadb-devel] TAR: Daten-Medium-Auflistung
+Message-ID: <4146D05A.1010409@gmx.com>
+
+Hallo Markus,
+
+hier nocheinmal die ?berarbeitete Liste der Daten f?r die einzelnen
+Medien, diesesmal sogar mit Kategorien. :)
+
+Audio:
+
+    Allgemein:
+       - 1x Titel
+       - 1x OriginalTitel
+       - 1x Band or Artist
+       - 1x Publisher
+       - 1x Kategorie
+       - 1x Release
+       - 1x AgeRestriction
+       - 1x Language
+       - 1x Kommentar
+
+    MedienInformationen:
+       - 1x DiscID
+       - 1x MediaName
+       - 1x MediaCount
+       - 1x MediaFormat
+       - 1x MediaCodec
+
+    MedienStatus:
+       - 1x MediaStatus
+       - 1x MediaOwner
+       - 1x MediaHolder
+
+    Tracks:
+       - Xx Tracks
+
+    Bild:
+       - 1x Picture
+
+    keine Kategorie:
+       - 1x CreationDate
+       - 1x ModificationDate
+
+
+
+Video:
+
+    Allgemein:
+       - 1x Titel
+       - 1x OriginalTitel
+       - 1x Director
+       - 1x Publisher
+       - 1x Kategorie
+       - 1x Release
+       - 1x AgeRestriction
+       - 1x Kommentar
+
+    MedienInformationen:
+       - 1x ImDBID
+       - 1x MediaName
+       - 1x MediaCount
+       - 1x MediaFormat
+       - 1x MediaCodec
+
+    MedienStatus:
+       - 1x MediaStatus
+       - 1x MediaOwner
+       - 1x MediaHolder
+
+    Actors:
+       - Xx Actors
+
+    Bild:
+       - 1x Picture
+
+    Sprache und Untertitel:
+       - Xx Subtitels
+       - Xx Soundtracks
+       - Xx Languages
+
+    keine Kategorie:
+       - 1x CreationDate
+       - 1x ModificationDate
+
+
+
+Print:
+
+    Allgemein:
+       - 1x Titel
+       - 1x OriginalTitel
+       - 1x Author
+       - 1x Publisher
+       - 1x Kategorie
+       - 1x Release
+       - 1x AgeRestriction
+       - 1x Language
+       - 1x Kommentar
+
+    MedienInformationen:
+       - 1x ISBN
+       - 1x MediaName
+       - 1x MediaCount
+       - 1x MediaFormat
+
+    MedienStatus:
+       - 1x MediaStatus
+       - 1x MediaOwner
+       - 1x MediaHolder
+
+    Bild:
+       - 1x Picture
+
+    keine Kategorie:
+       - 1x CreationDate
+       - 1x ModificationDate
+
+
+so, dass sollten jetzt alle gewesen sein. Falls ich doch etwas ?bersehen
+habe, sag einfach bescheid.
+Einen sch?nen Tag noch und bis morgen.
+
+MfG
+Boris Ruf
+
+
+
+

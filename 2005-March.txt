@@ -1,0 +1,137 @@
+From mblaschke at berlios.de  Tue Mar 15 11:28:16 2005
+From: mblaschke at berlios.de (Blaschke, Markus)
+Date: Tue, 15 Mar 2005 11:28:16 +0100
+Subject: [phpmediadb-devel] Datenauflistung
+Message-ID: <4236B8C0.3090100@users.berlios.de>
+
+Hi,
+hier nochmal die Auflistung der Daten, die wir in der aktuellen Version 
+implementieren werden:
+
+Gemeinsame Daten:
+----------------
+  - Titel
+  - Originaltitel
+  - MedienName
+  - Identifikationsnummer (z.B. ISBN)
+  - Ver?ffentlichungsjahr
+  - Kategorien (auch mehrere)
+  - Mediumgr??e (L?nge in Minuten / Seitenanzahl)
+  - Medienart (CD, DVD, Hardcover, Softcover...)
+  - Bild des Covers
+  - Verlag
+  - Altersbeschr?nkung
+  - Kodierungsart
+  - Medienanzahl
+  - Datum der Erstellung
+  - Datum der letzten ?nderung
+
+Bis zur Projektabgabe sollte dies vorl?ufig reichen.
+
+--
+MfG,
+  Blaschke, Markus
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/phpmediadb-devel/attachments/20050315/7c34fde6/attachment.pgp>
+
+From mblaschke at berlios.de  Tue Mar 15 11:42:19 2005
+From: mblaschke at berlios.de (Blaschke, Markus)
+Date: Tue, 15 Mar 2005 11:42:19 +0100
+Subject: [phpmediadb-devel] Methodenbenennung in tier.data
+Message-ID: <4236BC0B.8010602@users.berlios.de>
+
+Hi,
+
+wir sollten die Methoden wie folgt benennen:
+
+Methode get:
+------------
+  - Parameter $id
+  - Return Daten-Array
+  - Liefert einen Datensatz anhand des Prim?rschl?ssels zur?ck
+
+Methode getList:
+----------------
+  - Parameter $itemType (eventuell nicht immer)
+  - Return Daten-Array
+  - Liefert eine Liste der Datens?tze
+
+Methode create:
+---------------
+  - Parameter $data
+  - Return neuer Prim?rschl?ssel ($id)
+  - Erzeugt einen neuen Datensatz in der Datenbank
+
+Methode remove:
+---------------
+  - Paramter $id
+  - L?scht einen Datensatz in der Datenbank
+
+Methode modify:
+---------------
+  - Parameter $id, $data
+  - Ver?ndert einen Datensatz in der Datenbank
+
+Methode exist:
+--------------
+  - Paramter $id
+  - Return true/false [1/0]
+  - Gibt zur?ck, ob ein Datensatz existiert
+
+--
+MfG,
+  Blaschke Markus
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/phpmediadb-devel/attachments/20050315/0d185a74/attachment.pgp>
+
+From mblaschke at berlios.de  Tue Mar 22 21:47:18 2005
+From: mblaschke at berlios.de (Blaschke, Markus)
+Date: Tue, 22 Mar 2005 21:47:18 +0100
+Subject: [phpmediadb-devel] SQL-Transaktionen
+Message-ID: <42408456.1090303@users.berlios.de>
+
+Hi,
+
+Creole besitzt die Funktion der Transaktionen, wir sollten dies 
+unbedingt nutzen, wenn dies ohne Probleme auch mit MySQL funktioniert.
+
+Beispiel:
+try {
+   $conn->setAutoCommit(false); // start a transaction
+   $conn->executeUpdate("DELETE FROM mytable WHERE id = 3");
+   $conn->executeUpdate("DELETE FROM myothertable WHERE id = 4");
+   $conn->executeUpdate("UDPATE stillanothertable SET col = 1 WHERE id = 
+5");
+   $conn->commit(); // commit the transaction
+} catch (Exception $e) {
+   $conn->rollback(); // abort all delete/update queries in the transaction
+   print "Aborted the transaction because: " . $e->getMessage();
+}
+
+
+Damit k?nnen wir verhindern, dass die SQL-Befehle zwischendurch 
+abbrechen und wir eine inkonsistente Datenbank haben.
+
+Bitte unbedingt testen, ob das mit MySQL problemlos funktioniert.
+
+-- 
+Mit freundlichen Grue?en / Best regards,
+  Markus Blaschke
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/phpmediadb-devel/attachments/20050322/a3d57af0/attachment.pgp>
+

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [phpmediadb-devel] Methodenbenennung in tier.data
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/phpmediadb-devel/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:phpmediadb-devel%40lists.berlios.de?Subject=Re%3A%20%5Bphpmediadb-devel%5D%20Methodenbenennung%20in%20tier.data&In-Reply-To=%3C4236BC0B.8010602%40users.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000001.html">
+   <LINK REL="Next"  HREF="000003.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[phpmediadb-devel] Methodenbenennung in tier.data</H1>
+    <B>Blaschke, Markus</B> 
+    <A HREF="mailto:phpmediadb-devel%40lists.berlios.de?Subject=Re%3A%20%5Bphpmediadb-devel%5D%20Methodenbenennung%20in%20tier.data&In-Reply-To=%3C4236BC0B.8010602%40users.berlios.de%3E"
+       TITLE="[phpmediadb-devel] Methodenbenennung in tier.data">mblaschke at berlios.de
+       </A><BR>
+    <I>Tue Mar 15 11:42:19 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000001.html">[phpmediadb-devel] Datenauflistung
+</A></li>
+        <LI>Next message: <A HREF="000003.html">[phpmediadb-devel] SQL-Transaktionen
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+wir sollten die Methoden wie folgt benennen:
+
+Methode get:
+------------
+  - Parameter $id
+  - Return Daten-Array
+  - Liefert einen Datensatz anhand des Prim&#228;rschl&#252;ssels zur&#252;ck
+
+Methode getList:
+----------------
+  - Parameter $itemType (eventuell nicht immer)
+  - Return Daten-Array
+  - Liefert eine Liste der Datens&#228;tze
+
+Methode create:
+---------------
+  - Parameter $data
+  - Return neuer Prim&#228;rschl&#252;ssel ($id)
+  - Erzeugt einen neuen Datensatz in der Datenbank
+
+Methode remove:
+---------------
+  - Paramter $id
+  - L&#246;scht einen Datensatz in der Datenbank
+
+Methode modify:
+---------------
+  - Parameter $id, $data
+  - Ver&#228;ndert einen Datensatz in der Datenbank
+
+Methode exist:
+--------------
+  - Paramter $id
+  - Return true/false [1/0]
+  - Gibt zur&#252;ck, ob ein Datensatz existiert
+
+--
+MfG,
+  Blaschke Markus
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/phpmediadb-devel/attachments/20050315/0d185a74/attachment.pgp">https://lists.berlios.de/pipermail/phpmediadb-devel/attachments/20050315/0d185a74/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000001.html">[phpmediadb-devel] Datenauflistung
+</A></li>
+	<LI>Next message: <A HREF="000003.html">[phpmediadb-devel] SQL-Transaktionen
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/phpmediadb-devel">More information about the phpmediadb-devel
+mailing list</a><br>
+</body></html>
